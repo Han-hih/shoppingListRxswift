@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct List {
+    var checkButton: Bool
+    var listName: String
+    var star: Bool
+}
