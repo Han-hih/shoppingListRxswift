@@ -12,3 +12,4 @@ struct List {
     var listName: String
     var star: Bool
 }
+

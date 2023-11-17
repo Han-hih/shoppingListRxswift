@@ -10,8 +10,6 @@ import RxSwift
 
 final class ShoppingListTableViewCell: UITableViewCell {
     
-    static let identifier = "ShoppingListTableViewCell"
-    
     let listName = {
         let label = UILabel()
         label.text = "ddddd"

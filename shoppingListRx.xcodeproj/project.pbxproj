@@ -72,13 +72,13 @@
 		80C2FCD52AF7BC2E00AA2995 /* shoppingListRx */ = {
 			isa = PBXGroup;
 			children = (
-				80F7C2E32B06736300332652 /* Protocols */,
 				80C2FCD62AF7BC2E00AA2995 /* AppDelegate.swift */,
 				80C2FCD82AF7BC2E00AA2995 /* SceneDelegate.swift */,
+				80F7C2E52B0673B100332652 /* ViewController */,
+				80F7C2E42B0673A600332652 /* ViewModel */,
+				80F7C2E32B06736300332652 /* Protocols */,
 				80C2FCF12AF7BE9E00AA2995 /* ShoppingListTableViewCell.swift */,
-				80C2FCDA2AF7BC2E00AA2995 /* ShoppingListTableViewController.swift */,
 				8042CFB62AF8D0EA0021331A /* EditViewController.swift */,
-				80C2FCEA2AF7BDA500AA2995 /* ShoppingListViewModel.swift */,
 				8050F7DE2AF7CBFE00915ADC /* List.swift */,
 				80C2FCDC2AF7BC2E00AA2995 /* Main.storyboard */,
 				80C2FCDF2AF7BC2F00AA2995 /* Assets.xcassets */,
@@ -95,6 +95,22 @@
 				80F7C2DF2B06732500332652 /* Protocols.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		80F7C2E42B0673A600332652 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				80C2FCEA2AF7BDA500AA2995 /* ShoppingListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		80F7C2E52B0673B100332652 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				80C2FCDA2AF7BC2E00AA2995 /* ShoppingListTableViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
