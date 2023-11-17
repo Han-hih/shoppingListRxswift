@@ -23,7 +23,7 @@ final class ShoppingListTableViewController: UIViewController {
     }
     
    private func bind() {
-       let input = ShoppingListViewModel.Input(addButtonTap: addButton.rx.tap.asObservable(), addText: searchBar.rx.text.orEmpty.asObservable())
+       let input = ShoppingListViewModel.Input(addButtonTap: addButton.rx.tap.asObservable(), addText: searchBar.rx.text.orEmpty.asObservable(), deleteRow: tableView.rx.itemDeleted.asObservable(), modifyRow: tableView.rx.itemSelected.asObservable(), pushNavigation: tableView.rx.itemSelected.asObservable())
         
         let output = viewModel.transform(input: input)
        
@@ -35,33 +35,24 @@ final class ShoppingListTableViewController: UIViewController {
                 cell.starButton.setImage(element.star ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
             }
             .disposed(by: disposeBag)
-        
 
+//       
+//       output.items
+//           .bind(with: self) { owner, _ in
+//           let vc = EditViewController()
+//           owner.navigationController?.pushViewController(vc, animated: true)
+//       }
+//       .disposed(by: disposeBag)
        
-//
-//        addButton.rx.tap
-//            .withLatestFrom(searchBar.rx.text.orEmpty, resultSelector: { void, text in
-//                return text
-//            })
-//            .subscribe(with: self) { owner, _ in
-//                print("searchButtonClicked")
-//            }
-//            .disposed(by: disposeBag)
-//
+       output.nextScreen
+           .bind(with: self) { owner, _ in
+           let vc = EditViewController()
+           owner.navigationController?.pushViewController(vc, animated: true)
+       }
+       .disposed(by: disposeBag)
        
-//        addButton.rx.tap
-//            .withLatestFrom(searchBar.rx.text.orEmpty) { void, text in
-//                return text
-//            }
-//            .subscribe(with: self) { owner, text in
-//                owner.viewModel.list.insert(List(checkButton: false, listName: text, star: false), at: 0)
-//                owner.viewModel.items.onNext(owner.viewModel.list)
-//            }
-//            .disposed(by: disposeBag)
-        
-       
-       
-       
+
+               
 //        searchBar.rx.text.orEmpty
 //            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
 //            .distinctUntilChanged() //같은 문자열을 입력했을 때
@@ -71,14 +62,7 @@ final class ShoppingListTableViewController: UIViewController {
 //                print("==실시간 검색==")
 //            }
 //            .disposed(by: disposeBag)
-//        
-//        //삭제
-//        tableView.rx.itemDeleted
-//            .subscribe(with: self) { owner, indexPath in
-//                owner.viewModel.list.remove(at: indexPath.row)
-//                owner.viewModel.items.onNext(owner.viewModel.list)
-//            }
-//            .disposed(by: disposeBag)
+//
 //        //수정
 //        tableView.rx.itemSelected
 //            .subscribe(with: self) { owner, indexPath in
@@ -92,10 +76,7 @@ final class ShoppingListTableViewController: UIViewController {
 //                self.navigationController?.pushViewController(vc, animated: true)
 //            }
 //            .disposed(by: disposeBag)
-//        
-//        
-//        
-        
+       
         
         
     }
